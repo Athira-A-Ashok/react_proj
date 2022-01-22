@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+
+.header{
+    width: 100%;
+    background-color: black;
+    padding: 20px 50px 15px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.header .logo{
+    font-size: 25px;
+    color: seashell;
+}
+
+button{
+    margin-right: 10px;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: steelblue;
+    
+}
+
+.logout{
+    font-size: 15px;
+    color:black;
+    width: 100px;
+    text-align: center;
+    font-weight: bold;
+    height: 25px;
+    background-color: steelblue;
+    border-radius: 5px;
+}
+
+

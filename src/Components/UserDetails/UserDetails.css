@@ -1,0 +1,15 @@
+.det{
+    text-align: center;
+    color: blue;
+    font-size: 25px;
+}
+
+.det .ard{
+    background-color: skyblue;
+    width: 50%;
+    margin: 50px auto;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
