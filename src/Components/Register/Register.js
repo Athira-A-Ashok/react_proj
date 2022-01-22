@@ -10,13 +10,12 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
-  const [login, setLogin] = useState(true);
 
   const history = useHistory();
 
   var user_details = { username, email, password };
   var array = JSON.parse(localStorage.getItem("Users"));
-  console.log(array);
+  console.log("array----", array);
   let user = [];
   var i;
 
@@ -27,18 +26,21 @@ function Register() {
       for (i = 0; i < array.length; i++) {
         user.push(array[i]);
       }
-      console.log("---", user[1].username);
+
       for (i = 0; i < user.length; i++) {
-        // console.log("---",user[i].username)
         if (username == user[i].username) {
+          console.log("Got an error-----------------------------------");
           setError(true);
+          var flag = 1;
           break;
         } else {
+          flag = 0;
           setError(false);
         }
       }
     }
-    if (error) {
+
+    if(flag == 1) {
       console.log("Invalid Credentials");
       alert("Invalid Credentials");
     } else {
