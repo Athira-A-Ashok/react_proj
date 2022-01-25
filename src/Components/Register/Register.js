@@ -10,7 +10,8 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
-  const [login, setLogin] = useState(true);
+  const [emailexist, setEmailexist] = useState(false);
+  const [passwordexist, setPasswordexist] = useState(false);
 
   const history = useHistory();
 
@@ -27,20 +28,29 @@ function Register() {
       for (i = 0; i < array.length; i++) {
         user.push(array[i]);
       }
-      console.log("---", user[1].username);
+
       for (i = 0; i < user.length; i++) {
         // console.log("---",user[i].username)
         if (username == user[i].username) {
           setError(true);
+          var flag = 1;
+          break;
+        } else if (email == user[i].email) {
+          flag = 1;
+          setEmailexist(true);
+          break;
+        } else if (password == user[i].password) {
+          flag = 1;
+          setPasswordexist(true);
           break;
         } else {
+          flag = 0;
           setError(false);
         }
       }
     }
-    if (error) {
+    if (flag == 1) {
       console.log("Invalid Credentials");
-      alert("Invalid Credentials");
     } else {
       user.push(user_details);
       localStorage.setItem("Users", JSON.stringify(user));
@@ -53,7 +63,11 @@ function Register() {
       <Navbar />
       <div className="container">
         <h3>REGISTER</h3>
-        {error ? <p className="text-danger">User already exist!</p> : null}
+        {error ? (
+          <p className="text-danger" style={{ color: "red" }}>
+            User already exist!
+          </p>
+        ) : null}
         <input
           type="text"
           placeholder="UserName"
@@ -68,12 +82,29 @@ function Register() {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
+        {emailexist ? (
+          <p
+            className="text-danger"
+            style={{ color: "red", textAlign: "left" }}
+          >
+            email already exist
+          </p>
+        ) : null}
         <input
           type="password"
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+        {passwordexist ? (
+          <p
+            className="text-danger"
+            style={{ color: "red", textAlign: "left" }}
+          >
+            password already exist
+          </p>
+        ) : null}
+
         <button className="submit" type="submit" onClick={userDetails}>
           Register
         </button>
